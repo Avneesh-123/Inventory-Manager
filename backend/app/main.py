@@ -41,6 +41,15 @@ def on_startup():
     Base.metadata.create_all(bind=engine)
 
 
+@app.get("/")
+def root():
+    return {
+        "message": "Inventory & Order Management API",
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
